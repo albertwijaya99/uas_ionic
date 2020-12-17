@@ -1,0 +1,54 @@
+https://github.com/albetz99/uas_ionic
+
+
+email: albert.wijaya@student.umn.ac.id
+pw: asdasd123
+
+export const environment = {
+  production: false,
+  firebaseConfig: {
+    apiKey: "AIzaSyDnc4cQH7-Vqlz7Ri7EUYi9qc2auvukdhI",
+    authDomain: "uasionic-67473.firebaseapp.com",
+    databaseURL: "https://uasionic-67473-default-rtdb.firebaseio.com",
+    projectId: "uasionic-67473",
+    storageBucket: "uasionic-67473.appspot.com",
+    messagingSenderId: "597259245287",
+    appId: "1:597259245287:web:e1f18a9cd173e01652b442",
+    measurementId: "G-E4CY16NN3V"
+  }
+};
+
+import { NgModule } from '@angular/core';
+import {BrowserModule, HAMMER_GESTURE_CONFIG} from '@angular/platform-browser';
+import { RouteReuseStrategy } from '@angular/router';
+import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+import { StatusBar } from '@ionic-native/status-bar/ngx';
+import {environment} from '../environments/environment';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
+import { IonicGestureConfig } from './IonicGestureConfig';
+
+@NgModule({
+  declarations: [AppComponent],
+  entryComponents: [],
+  imports: [BrowserModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    IonicModule.forRoot(), AppRoutingModule],
+  providers: [
+    StatusBar,
+    AngularFireModule,
+    AngularFireAuthModule,
+    AngularFireDatabaseModule,
+    AngularFireStorageModule,
+    SplashScreen,
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    {provide: HAMMER_GESTURE_CONFIG, useClass: IonicGestureConfig}
+  ],
+  bootstrap: [AppComponent]
+})
+export class AppModule {}

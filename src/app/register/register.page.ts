@@ -38,10 +38,8 @@ export class RegisterPage implements OnInit {
           };
           this.userService.newUser(userData, resp.user.uid);
           form.reset();
-          this.presentLoading().then(() => {
-              this.router.navigate(['./login']);
-              this.presentToast('Please verify your email');
-            });
+          this.router.navigate(['./login']);
+          this.presentToast('Please verify your email');
         })
         .catch(err => {
           console.log(err);
@@ -52,13 +50,6 @@ export class RegisterPage implements OnInit {
         this.errorMsg = err.message;
       });
     }
-  }
-  async presentLoading() {
-    const loading = await this.loadingCtrl.create({
-      message: 'Creating Account',
-      duration: 1000
-    });
-    await loading.present();
   }
   async presentToast(msg: string) {
     const toast = await this.toastCtrl.create({

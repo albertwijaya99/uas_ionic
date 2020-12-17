@@ -75,7 +75,7 @@ export class AddfriendPage implements OnInit {
     }
   }
   back() {
-    window.location = '/tabs/friend';
+    window.location.href = '/tabs/friend';
   }
   async presentToast(msg: string) {
     const toast = await this.toastCtrl.create({
