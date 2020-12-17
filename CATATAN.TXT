@@ -1,5 +1,5 @@
 https://github.com/albetz99/uas_ionic
-
+https://uas-albertwijaya-21498.vercel.app/
 
 email: albert.wijaya@student.umn.ac.id
 pw: asdasd123
