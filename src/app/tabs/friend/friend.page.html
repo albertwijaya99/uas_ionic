@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Fren</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-toolbar>
+    <ion-searchbar mode="ios" (ionChange)="onChange($event)"></ion-searchbar>
+  </ion-toolbar>
+  <ion-button routerLink="/addfriend" expand="block">Add New</ion-button>
+  <ion-list>
+    <div *ngIf="friendList.length == 0">
+      <ion-item lines="none" style="text-align: center;">
+        <ion-label>No Friends</ion-label>
+      </ion-item>
+    </div>
+    <div *ngIf="friendList.length != 0">
+      <div *ngFor="let friend of friendList">
+          <ion-item>
+            <ion-avatar slot="start">
+              <img *ngIf="!friend.profileImage" src="https://secure.gravatar.com/avatar/2e69cc3dd9ef2b804e6e75a1f2fbe37e?s=46&d=identicon" alt="">
+              <img *ngIf="friend.profileImage" [src]= friend.profileImage>
+            </ion-avatar>
+            <ion-label>
+              <h2>{{friend}}</h2>
+            </ion-label>
+            <ion-button (click)="delete(friend)" color="danger">x</ion-button>
+          </ion-item>
+        </div>
+    </div>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button (click)="back()"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Add Friend</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-toolbar>
+    <ion-searchbar (ionChange)="onChange($event)"></ion-searchbar>
+  </ion-toolbar>
+  <ion-list>
+    <div *ngIf="friends.length === 0">
+      <ion-item>
+      </ion-item>
+    </div>
+    <div *ngIf="friends.length !== 0">
+      <ion-item *ngFor="let friends of friends" >
+        <ion-avatar slot="start">
+          <img *ngIf="!friends.profileImage" src="https://secure.gravatar.com/avatar/2e69cc3dd9ef2b804e6e75a1f2fbe37e?s=46&d=identicon">
+          <img *ngIf="friends.profileImage" [src]= friends.profileImage>
+        </ion-avatar>
+        <ion-label (click)="add(friends.nama)">
+          {{friends.nama}}
+        </ion-label>
+      </ion-item>
+    </div>
+  </ion-list>
+</ion-content>

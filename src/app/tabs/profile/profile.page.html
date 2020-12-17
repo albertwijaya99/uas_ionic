@@ -1,0 +1,25 @@
+<ion-content class="ion-padding">
+  <ion-avatar>
+    <img *ngIf="currUser.profileImage == null" src='https://secure.gravatar.com/avatar/2e69cc3dd9ef2b804e6e75a1f2fbe37e?s=46&d=identicon'>
+    <img *ngIf="currUser.profileImage != null" [src]="currUser.profileImage" />
+  </ion-avatar>
+  <h2>{{currUser.nama}}</h2>
+  <h2>{{currUser.email}}</h2>
+
+  <h2>History</h2>
+  <ion-list class="feedlist">
+    <ion-item  *ngFor="let l of loc" ion-long-press [interval]="400" (longPressed)="presentAlert(l.id)">
+      {{currUser.nama}} checked-in at {{l.nama}} at {{l.date}}
+    </ion-item>
+  </ion-list>
+
+  <ion-button [routerLink]="['/edit-profile']" expand="block">
+    <ion-label class="label-btn">Edit Profile</ion-label>
+  </ion-button>
+  <ion-button (click)="logout()" expand="block">
+    <ion-label class="label-btn">Logout</ion-label>
+  </ion-button>
+  <ion-button expand="block" color="danger" routerLink="/msg">
+    <ion-icon class="icon-btn" name="mail-unread-outline"></ion-icon>
+  </ion-button>
+</ion-content>

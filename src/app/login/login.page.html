@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+      <ion-list>
+        <ion-item>
+          <ion-label position="floating">Email</ion-label>
+          <ion-input type="email" email #emailCtrl="ngModel" ngModel name="email" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Password</ion-label>
+          <ion-input type="password" #passwordCtrl="ngModel" ngModel name="password" required></ion-input>
+        </ion-item>
+      </ion-list>
+      <ion-button type="submit" [disabled]="!f.valid" expand="block">Login</ion-button>
+      <ion-button [routerLink]="['/register']" expand="block">Register</ion-button>
+    </form>
+</ion-content>
